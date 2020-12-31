@@ -1,3 +1,4 @@
+
 #include "simple_obd_test.h"
 #include "customized_GPS.h"
 #include "customized_OBD.h"
@@ -113,7 +114,7 @@ int FilterGpsData(char* isoTime, double* res){
 		double dist 		= (double) TinyGPS::distance_between((float) meanGPSCoord[prev][2],(float) meanGPSCoord[prev][1],(float) res[2],(float) res[1]);
 		#if USE_OBD==0
 			double dist_max		= gd->speed*shiftTime/3.6*1.25;
-		#elif
+		#else
 			double dist_max		= getOBDSpeed()*shiftTime/3.6*1.2;
 		#endif
 		if ((dist>dist_max) || (dist>(85*shiftTime)))
